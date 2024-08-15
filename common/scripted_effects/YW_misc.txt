@@ -1,0 +1,3 @@
+on_age_ability_taken_age_of_fae = { }
+on_age_ability_taken_age_of_danuatha= { }
+on_age_ability_taken_age_of_aosi = { }

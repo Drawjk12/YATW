@@ -1,0 +1,148 @@
+YATW_missions = {
+	slot = 5
+	generic = yes
+	ai = yes
+	potential = {
+		always = yes
+	}
+	
+	no_allies_mission = {
+		icon = mission_impaled_soldies
+		required_missions = { }
+		trigger = {
+			NOT = { num_of_allies = 1 }
+			NOT = { diplomatic_reputation = 1 }
+			NOT = {
+				all_known_country = {
+					has_opinion = {
+						who = ROOT
+						value = 30
+					}
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 50
+			add_mil_power = 100
+			add_treasury = 100
+		}
+	}
+
+	enemies_mission = {
+		icon = mission_assemble_an_army
+		required_missions = { no_allies_mission }
+		trigger = {
+			calc_true_if  = {
+				all_country = {
+					OR = {
+						is_rival = ROOT
+						is_enemy = ROOT
+					}
+				}
+				amount = 4
+			}
+			all_country = {
+				NOT = {
+					has_opinion = {
+						who = ROOT
+						value = 95
+					}
+				}
+			}
+			NOT = { num_of_allies = 1 }
+		}
+		effect = {
+			add_country_modifier = {
+				name = many_enemies
+				duration = -1
+			}
+			every_country = {
+				limit = {
+					historical_friend_with = ROOT
+				}
+				remove_historical_friend = ROOT
+			}
+		}
+	}
+
+	coalition_mission = {
+		icon = mission_pf_map_table
+		required_missions = { enemies_mission }
+		trigger = {
+			any_country = {
+				coalition_target = ROOT
+			}
+			is_in_coalition_war = yes
+			NOT = { num_of_allies = 1 }
+		}
+		effect = {
+			add_mil_power = 500
+			add_country_modifier = {
+				name = lone_wolf
+				duration = -1
+			}
+		}
+	}
+	
+	all_alone_mission = {
+		icon = mission_pf_map_table
+		required_missions = { coalition_mission }
+		trigger = {
+			NOT = { num_of_subjects = 1 }
+			NOT = { num_of_allies = 1 }
+		}
+		effect = {
+			add_mil_power = 500
+			add_absolutism = 75
+		}
+	}
+	
+	YATW = {
+		icon = mission_unite_home_region
+		completed_by = 1000.1.1
+		required_missions = { all_alone_mission }
+		trigger = {
+			all_country = {
+				war_with = ROOT
+			}
+		}
+		effect = {
+			change_government_reform_progress = 500
+			custom_tooltip = YATW_mission_tooltip
+			hidden_effect = {
+				every_province = {
+					limit = {
+						is_sea = no
+					}
+					add_permanent_claim = ROOT
+				}
+				every_country = {
+					limit = {
+						exists = yes
+					}
+					add_historical_rival = ROOT
+					add_rival = ROOT
+				}
+			}
+		}
+	}
+	
+	YAreTW = {
+		icon = mission_unite_home_region
+		completed_by = 1000.1.1
+		required_missions = { YATW }
+		trigger = {
+			all_province = {
+				OR = {
+					owned_by = ROOT
+					is_wasteland = yes
+					is_sea = yes
+				}
+			}
+		}
+		effect = {
+			add_years_of_income = 10
+			add_stability = -3
+		}
+	}
+}

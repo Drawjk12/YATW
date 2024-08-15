@@ -1,0 +1,11 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 0
+
+owner = ANI
+add_core = ANI
+
+culture = aegijsha
+
+religion = mushi

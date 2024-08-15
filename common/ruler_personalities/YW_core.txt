@@ -1,0 +1,47 @@
+crazy_hamburber = {
+	ruler_allow = {
+		allow = {
+			always = no
+		}
+	
+		chance = {
+			modifier = {
+				factor = 0
+				always = no
+			}
+		}
+	}
+
+	heir_allow = {
+		allow = {
+			always = no
+		}
+	
+		chance = {
+			modifier = {
+				factor = 0
+				always = no
+			}
+		}
+	}
+	
+	consort_allow = {
+		allow = {
+			always = no
+		}
+
+		chance = {
+			modifier = {
+				factor = 0
+				always = no
+			}
+		}
+	}
+
+	chance = {
+		modifier = {
+			factor = 0
+			always = no
+		}
+	}
+}

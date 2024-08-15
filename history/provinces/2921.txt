@@ -1,0 +1,13 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 1
+
+owner = KOC
+add_core = KOC
+
+culture = coireansic
+
+religion = mushi
+
+fort_15th = yes

@@ -1,0 +1,64 @@
+
+all_region = {
+	areas = {
+		all_area
+		sxuwvk_area
+		vzgrpn_area
+		tnilu_area
+		xugiser_area
+		axpbte_area
+	}
+}
+
+orterre = { #Continent Name
+	areas = {
+		aazzm_area
+		rsyjd_area
+		amzmv_area
+		jkhyd_area
+		sityk_area
+		fxkbyh_area
+		nubgpxk_area
+		rarybh_area
+		qgtthk_area
+		cimhzm_area
+		gxtvg_area
+		dyymg_area
+		zpnoes_area
+		wlrtdjd_area
+		rxtfb_area
+		wclquou_area
+		pxjru_area
+		fdlbea_area
+		wduueo_area
+		mqyow_area
+		jopzz_area
+		wrrahq_area
+		rbqass_area
+	}
+}
+
+monodon = { #Continent Name
+	areas = {
+		hsiyt_area
+		geelzlg_area
+		gmqxvii_area
+		wugugs_area
+		lpczwll_area
+		ucxduha_area
+		nemxg_area
+		olyblm_area
+		sdnmrv_area
+		
+		hikdqlm_area
+		fstxsfd_area
+		mmzndd_area
+		qagkzt_area
+		sypkbdd_area
+		miftla_area
+		jzovjpl_area
+		snsadkb_area
+		imnlh_area
+		hbkieog_area
+	}
+}

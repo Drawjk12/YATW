@@ -1,0 +1,12 @@
+bookmark =
+{
+	name = "ORIGIN_NAME"
+	desc = "ORIGIN_DESC"
+	date = 100.11.11
+	
+	country = KOL
+	country = KOT
+	country = KOC
+	country = KOR
+
+}

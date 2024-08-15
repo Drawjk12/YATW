@@ -1,0 +1,11 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 0
+
+owner = FUN
+add_core = FUN
+
+culture = aouni
+
+religion = mushi

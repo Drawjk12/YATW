@@ -1,0 +1,10 @@
+custom_text_box = {
+    name = magic_power_text
+    potential = { always = yes }
+    tooltip = magic_power_text_tt
+}
+
+custom_window = {
+    name = magic_window
+    potential = { always = yes }
+}

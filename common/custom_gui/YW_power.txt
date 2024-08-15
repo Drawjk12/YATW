@@ -1,0 +1,323 @@
+custom_icon = {
+    name = ruler_fire_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_ruler_flag = race_aosi
+			has_ruler_flag = race_danuatha
+			has_ruler_flag = race_fae
+			has_ruler_flag = race_mushi
+		}
+	}
+    tooltip = power_fire #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 1 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_ruler_flag = power_fire
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_ruler_flag = power_fire
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = ruler_water_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_ruler_flag = race_aosi
+			has_ruler_flag = race_danuatha
+			has_ruler_flag = race_fae
+			has_ruler_flag = race_mushi
+		}
+	}
+    tooltip = power_water #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 2 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_ruler_flag = power_water
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_ruler_flag = power_water
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = ruler_earth_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_ruler_flag = race_aosi
+			has_ruler_flag = race_danuatha
+			has_ruler_flag = race_fae
+			has_ruler_flag = race_mushi
+		}
+	}
+    tooltip = power_earth #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 3 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_ruler_flag = power_earth
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_ruler_flag = power_earth
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = ruler_air_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_ruler_flag = race_aosi
+			has_ruler_flag = race_danuatha
+			has_ruler_flag = race_fae
+			has_ruler_flag = race_mushi
+		}
+	}
+    tooltip = power_air #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 4 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_ruler_flag = power_air
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_ruler_flag = power_air
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = heir_fire_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_heir_flag = race_aosi
+			has_heir_flag = race_danuatha
+			has_heir_flag = race_fae
+			has_heir_flag = race_mushi
+		}
+	}
+    tooltip = power_fire #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 1 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = power_fire
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_heir_flag = power_fire
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = heir_water_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_heir_flag = race_aosi
+			has_heir_flag = race_danuatha
+			has_heir_flag = race_fae
+			has_heir_flag = race_mushi
+		}
+	}
+    tooltip = power_water #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 2 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = power_water
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_heir_flag = power_water
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = heir_earth_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_heir_flag = race_aosi
+			has_heir_flag = race_danuatha
+			has_heir_flag = race_fae
+			has_heir_flag = race_mushi
+		}
+	}
+    tooltip = power_earth #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 3 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = power_earth
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_heir_flag = power_earth
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = heir_air_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_heir_flag = race_aosi
+			has_heir_flag = race_danuatha
+			has_heir_flag = race_fae
+			has_heir_flag = race_mushi
+		}
+	}
+    tooltip = power_air #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 4 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = power_air
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_heir_flag = power_air
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = consort_fire_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_consort_flag = race_aosi
+			has_consort_flag = race_danuatha
+			has_consort_flag = race_fae
+			has_consort_flag = race_mushi
+		}
+	}
+    tooltip = power_fire #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 1 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = power_fire
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_consort_flag = power_fire
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = consort_water_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_consort_flag = race_aosi
+			has_consort_flag = race_danuatha
+			has_consort_flag = race_fae
+			has_consort_flag = race_mushi
+		}
+	}
+    tooltip = power_water #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 2 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = power_water
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_consort_flag = power_water
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = consort_earth_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_consort_flag = race_aosi
+			has_consort_flag = race_danuatha
+			has_consort_flag = race_fae
+			has_consort_flag = race_mushi
+		}
+	}
+    tooltip = power_earth #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 3 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = power_earth
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_consort_flag = power_earth
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = consort_air_power_icon #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_consort_flag = race_aosi
+			has_consort_flag = race_danuatha
+			has_consort_flag = race_fae
+			has_consort_flag = race_mushi
+		}
+	}
+    tooltip = power_air #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 4 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = power_air
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 5 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+		trigger = {
+			NOT = {
+				has_consort_flag = power_air
+			}
+		}
+    }
+}

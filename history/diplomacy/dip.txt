@@ -1,0 +1,27 @@
+royal_marriage = {
+	first = KOR
+	second = KOT
+	start_date = 1.1.1
+	end_date = 150.1.1
+}
+
+royal_marriage = {
+	first = KOR
+	second = KOT
+	start_date = 1.1.1
+	end_date = 170.1.1
+}
+
+alliance = {
+	first = KOR
+	second = KOT
+	start_date = 150.1.1
+	end_date = 180.1.1
+}
+
+royal_marriage = {
+	first = KOC
+	second = KCU
+	start_date = 1.1.1
+	end_date = 150.1.1
+}

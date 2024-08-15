@@ -1,0 +1,45 @@
+happy_citizens = {
+	global_unrest = -2
+	stability_cost_modifier = -0.1
+}
+quarantine = {
+	legitimacy = 2.5
+	global_unrest = 2
+	production_efficiency = -0.15
+	stability_cost_modifier = 0.5
+	global_trade_power = -0.2
+}
+corrupt_official = {
+	yearly_corruption = 0.1
+	global_tax_modifier = -0.25
+}
+many_enemies = {
+	ae_impact = 0.25
+	land_morale_constant = 2
+}
+lone_wolf = {
+	discipline = 0.15
+	diplomatic_reputation = -1
+}
+individualism = {
+	ae_impact = 0.5
+	yearly_absolutism = 0.5
+	fabricate_claims_cost = -0.2
+	can_chain_claim = yes
+	diplomatic_reputation = -3
+}
+sozins_comet_3 = {
+	fire_damage = 3
+}
+sozins_comet_2 = {
+	fire_damage = 2
+}
+sozins_comet_1 = {
+	fire_damage = 1
+}
+corrupt_provinces = {
+	yearly_corruption = 0.5
+}
+attending_assembly = {
+	diplomats = -1
+}

@@ -1,0 +1,22 @@
+log = "#  New Run  #"
+log = "#  Test 1  #"
+every_country = {
+	limit = {
+		within_distance_from_river = { DISTANCE = 2700 }
+	}
+	log = "[This.GetName]"
+}
+log = "#  Test 2  #"
+every_country = {
+	limit = {
+		NOT = { within_distance_from_river = { DISTANCE = 2700 } }
+	}
+	log = "[This.GetName]"
+}
+
+every_country = {
+	set_government_and_rank = { 
+		government = monarchy
+		rank = 3
+	}
+}

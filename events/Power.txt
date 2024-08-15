@@ -1,0 +1,477 @@
+namespace = YW_power
+
+country_event = { #Build Palace
+	id = YW_power.1
+	title = YW_power.1.t
+	desc = YW_power.1.d
+	picture = GREAT_BUILDING_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = power_earth
+		has_ruler_flag = race_fae
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = YW_power.1.a
+		capital_scope = {
+			add_base_tax = 1
+		}
+	}
+}
+
+country_event = { #Unnatural Disaster Generic
+	id = YW_power.2
+	title = YW_power.2.t
+	desc = YW_power.2.d
+	picture = COUNTRY_COLLAPSE_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = race_fae
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = YW_power.2.a
+		random_owned_province = {
+			add_base_production = -1
+		}
+	}
+}
+
+country_event = { #Fae Interaction Bad
+	id = YW_power.3
+	title = YW_power.3.t
+	desc = YW_power.3.d
+	picture = ACCUSATION_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = race_fae
+		any_known_country = {
+			has_ruler_flag = race_fae
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = YW_power.3.a
+		random_known_country = {
+			limit = {
+				has_ruler_flag = race_fae
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = insulted
+			}
+		}
+	}
+}
+
+country_event = { #Fae to Fae bonding
+	id = YW_power.4
+	title = YW_power.4.t
+	desc = YW_power.4.d
+	picture = ACCUSATION_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = race_fae
+		any_known_country = {
+			has_ruler_flag = race_fae
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		random_known_country = {
+			limit = {
+				has_ruler_flag = race_fae
+			}
+			save_event_target_as = fae_bond_et
+		}
+	}
+
+	option = {
+		name = YW_power.4.a
+		if = {
+			limit = {
+				has_ruler_flag = race_fae
+			}
+			event_target:fae_bond_et = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_supportive_monarch
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Unnatural Disaster Fire
+	id = YW_power.5
+	title = YW_power.5.t
+	desc = YW_power.5.d
+	picture = COUNTRY_COLLAPSE_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = race_fae
+		has_ruler_flag = power_fire
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		random_owned_province = {
+			save_event_target_as = unnatural_fire
+		}
+	}
+
+	option = {
+		name = YW_power.5.a
+		event_target:unnatural_fire = {
+			add_base_production = -1
+			add_devastation = 1
+		}
+	}
+}
+
+country_event = { #Unnatural Disaster Earth
+	id = YW_power.6
+	title = YW_power.6.t
+	desc = YW_power.6.d
+	picture = COUNTRY_COLLAPSE_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = race_fae
+		has_ruler_flag = power_earth
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		random_owned_province = {
+			save_event_target_as = unnatural_fire
+		}
+	}
+
+	option = {
+		name = YW_power.6.a
+		event_target:unnatural_fire = {
+			add_base_production = -1
+			add_devastation = 1
+		}
+	}
+}
+
+country_event = { #Improve Infastructure Earth
+	id = YW_power.7
+	title = YW_power.7.t
+	desc = YW_power.7.d
+	picture = GREAT_BUILDING_eventPictur
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = power_earth
+		has_ruler_flag = race_fae
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		random_owned_province = {
+			save_event_target_as = infastructure_earth
+		}
+	}
+
+	option = {
+		name = YW_power.7.a
+		event_target:infastructure_earth = {
+			add_base_production = 2
+		}
+	}
+}
+
+country_event = { #Unnatural Harbor
+	id = YW_power.8
+	title = YW_power.8.t
+	desc = YW_power.8.d
+	picture = PORT_BLOCKADED_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = power_water
+		has_ruler_flag = race_fae
+		any_owned_province = {
+			NOT = { province_has_center_of_trade_of_level = 1 }
+			has_port = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			random = {
+				chance = 50
+				set_ruler_flag = random_event_flag
+			}
+		}
+	}
+
+	option = {
+		name = YW_power.8.a
+		trigger = {
+			has_ruler_flag = random_event_flag
+		}
+		random_owned_province = {
+			limit = {
+				NOT = { province_has_center_of_trade_of_level = 1 }
+				has_port = yes
+			}
+			add_base_production = -1
+			add_devastation = 1
+		}
+	}
+	option = {
+		name = YW_power.8.b
+		trigger = {
+			NOT = { has_ruler_flag = random_event_flag }
+		}
+		random_owned_province = {
+			limit = {
+				NOT = { province_has_center_of_trade_of_level = 1 }
+				has_port = yes
+			}
+			center_of_trade = 1
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			clr_ruler_flag = random_event_flag
+		}
+	}
+}
+
+country_event = { #Play with Fire
+	id = YW_power.9
+	title = YW_power.9.t
+	desc = YW_power.9.d
+	picture = VILLAGE_BURNING_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = power_fire
+		has_ruler_flag = race_fae
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		random_owned_province = {
+			save_event_target_as = infastructure_fire
+		}
+	}
+
+	option = {
+		name = YW_power.9.a
+		event_target:infastructure_fire = {
+			add_base_production = -1
+			add_devastation = 3
+		}
+	}
+}
+
+country_event = { #Play with Sails
+	id = YW_power.10
+	title = YW_power.10.t
+	desc = YW_power.10.d
+	picture = SHIP_SAILING_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_ruler_flag = race_fae
+		has_ruler_flag = power_air
+		num_of_light_ship = 5
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			random = {
+				chance = 50
+				set_ruler_flag = random_event_flag
+			}
+		}
+	}
+
+	option = {
+		name = YW_power.10.a
+		trigger = {
+			has_ruler_flag = random_event_flag
+		}
+		add_years_of_income = 0.8
+		hidden_effect = {
+			clr_ruler_flag = random_event_flag
+		}
+	}
+	option = {
+		name = YW_power.10.b
+		trigger = {
+			NOT = { has_ruler_flag = random_event_flag }
+		}
+		add_years_of_income = -0.8
+		hidden_effect = {
+			clr_ruler_flag = random_event_flag
+		}
+	}	
+}
+
+country_event = { #Death
+	id = YW_power.11
+	title = YW_power.11.t
+	desc = YW_power.11.d
+	picture = DEATH_OF_HEIR_eventPicture
+
+	trigger = {
+		has_ruler_flag = race_fae
+	}
+	
+	mean_time_to_happen = {
+		years = 150
+	}
+
+	option = {
+		name = YW_power.11.a
+	}
+
+	after = {
+		hidden_effect = {
+			kill_ruler = yes
+		}
+	}
+}
+
+country_event = { #Sozins Comet
+	id = YW_power.12
+	title = YW_power.12.t
+	desc = YW_power.12.d
+	picture = DEATH_OF_HEIR_eventPicture
+	hidden = yes
+	
+	trigger = {
+		is_year = 117
+	}
+	
+	mean_time_to_happen = {
+		years = 100
+	}
+	
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				country_event = {
+					id = YW_power.13
+				}
+				if = {
+					limit = {
+						has_ruler_flag = power_fire
+						has_ruler_flag = race_fae
+					}
+					add_country_modifier = {
+						name = sozins_comet_3
+						duration = 365
+					}
+				}
+				if = {
+					limit = {
+						has_ruler_flag = power_fire
+						has_ruler_flag = race_danuatha
+					}
+					add_country_modifier = {
+						name = sozins_comet_2
+						duration = 365
+					}
+				}
+				if = {
+					limit = {
+						has_ruler_flag = power_fire
+						has_ruler_flag = race_aosi
+					}
+					add_country_modifier = {
+						name = sozins_comet_1
+						duration = 365
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = YW_power.12.a
+	}
+}
+
+country_event = { #Sozins Comet
+	id = YW_power.13
+	title = YW_power.13.t
+	desc = YW_power.13.d
+	picture = COMET_SIGHTED_eventPicture
+	
+	mean_time_to_happen = {
+		years = 100
+	}
+
+	option = {
+		name = YW_power.13.a
+		trigger = {
+			has_ruler_flag = power_fire
+		}
+	}
+	option = {
+		name = YW_power.13.b
+		trigger = {
+			NOT = { has_ruler_flag = power_fire }
+		}
+	}
+}

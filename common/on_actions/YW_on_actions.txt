@@ -1,0 +1,316 @@
+on_startup = {
+	every_country = {
+		set_variable = {
+			which = magic_power_var
+			value = 100
+		}
+		log = "magic_power_var: [This.magic_power_var.GetValue]"
+	}
+}
+
+on_emperor_elected = {
+	if = {
+		limit = {
+			NOT = { 
+				OR = {
+					has_ruler_flag = race_aosi
+					has_ruler_flag = race_danuatha
+					has_ruler_flag = race_fae
+					has_ruler_flag = race_mushi
+				}
+			}
+		}
+		random_list = {
+			15 = {
+				set_ruler_flag = race_fae
+				random_list = {
+					25 = { set_ruler_flag = power_earth }
+					25 = { set_ruler_flag = power_air }
+					25 = { set_ruler_flag = power_water }
+					25 = { set_ruler_flag = power_fire }
+				}
+				add_ruler_personality = immortal_personality
+				country_event = { id = YW_race.1 }
+				random = {
+					chance = 50
+					change_adm = -2
+				}
+				random = {
+					chance = 50
+					change_dip = -2
+				}
+				random = {
+					chance = 50
+					change_mil = 1
+				}
+				modifier = {
+					factor = 0.5
+					FROM = {
+						has_ruler_flag = race_aosi
+					}
+				}
+				add_ruler_modifier = { 
+					name = fae_ruler_mod
+					duration = -1  
+				}
+			}
+			75 = {
+				set_ruler_flag = race_danuatha
+				add_ruler_modifier = { 
+					name = danuatha_ruler_mod
+					duration = -1  
+				}
+				random_list = {
+					25 = {
+						set_ruler_flag = power_earth
+						modifier = {
+							factor = 2
+							FROM = {
+								has_ruler_flag = power_earth
+							}
+						}
+					}
+					25 = {
+						set_ruler_flag = power_air
+						modifier = {
+							factor = 2
+							FROM = {
+								has_ruler_flag = power_air
+							}
+						}
+					}
+					25 = {
+						set_ruler_flag = power_water
+						modifier = {
+							factor = 2
+							FROM = {
+								has_ruler_flag = power_water
+							}
+						}
+					}
+					25 = {
+						set_ruler_flag = power_fire
+						modifier = {
+							factor = 2
+							FROM = {
+								has_ruler_flag = power_fire
+							}
+						}
+					}
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_earth
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_air
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_water
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_fire
+				}
+				modifier = {
+					factor = 0.8
+					FROM = {
+						has_ruler_flag = race_aosi
+					}
+				}
+				modifier = {
+					factor  = 0.01
+					has_reform = race_power_reform
+				}
+			}
+			10 = {
+				set_ruler_flag = race_aosi
+				random = {
+					chance = 10
+					set_ruler_flag = power_earth
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_air
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_water
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_fire
+				}
+				if = {
+					limit = {
+						has_reform = race_power_reform
+					}
+					random_list = {
+						25 = { set_ruler_flag = power_earth }
+						25 = { set_ruler_flag = power_air }
+						25 = { set_ruler_flag = power_water }
+						25 = { set_ruler_flag = power_fire }
+					}
+				}
+				random = {
+					chance = 50
+					change_adm = 1
+				}
+				random = {
+					chance = 50
+					change_dip = 1
+				}
+				random = {
+					chance = 50
+					change_mil = -1
+				}
+				modifier = {
+					factor = 0.5
+					FROM = {
+						has_ruler_flag = race_fae
+					}
+				}
+				modifier = {
+					factor  = 0
+					has_reform = race_power_reform
+				}
+			}
+		}
+	}
+}
+
+on_new_monarch = {
+	if = {
+		limit = {
+			NOT = { 
+				OR = {
+					has_ruler_flag = race_aosi
+					has_ruler_flag = race_danuatha
+					has_ruler_flag = race_fae
+					has_ruler_flag = race_mushi
+					has_ruler_flag = power_air
+					has_ruler_flag = power_water
+					has_ruler_flag = power_earth
+					has_ruler_flag = power_fire
+				}
+			}
+		}
+		add_race_and_power = { ruler = yes heir = no consort = no }
+	}
+}
+
+on_new_heir = {
+	if = {
+		limit = {
+			NOT = { 
+				OR = {
+					has_heir_flag = race_aosi
+					has_heir_flag = race_danuatha
+					has_heir_flag = race_fae
+					has_heir_flag = race_mushi
+					has_heir_flag = power_air
+					has_heir_flag = power_water
+					has_heir_flag = power_earth
+					has_heir_flag = power_fire
+				}
+			}
+		}
+		add_race_and_power = { ruler = no heir = yes consort = no }
+	}
+}
+
+on_new_consort = {
+	if = {
+		limit = {
+			NOT = { 
+				OR = {
+					has_consort_flag = race_aosi
+					has_consort_flag = race_danuatha
+					has_consort_flag = race_fae
+					has_consort_flag = race_mushi
+					has_consort_flag = power_air
+					has_consort_flag = power_water
+					has_consort_flag = power_earth
+					has_consort_flag = power_fire
+				}
+			}
+		}
+		add_race_and_power = { ruler = no heir = no consort = yes }
+	}
+}
+
+on_regent = {
+	if = {
+		limit = {
+			NOT = { 
+				OR = {
+					has_ruler_flag = race_aosi
+					has_ruler_flag = race_danuatha
+					has_ruler_flag = race_fae
+					has_ruler_flag = race_mushi
+					has_ruler_flag = power_air
+					has_ruler_flag = power_water
+					has_ruler_flag = power_earth
+					has_ruler_flag = power_fire
+				}
+			}
+		}
+		add_race_and_power = { ruler = yes heir = no consort = no }
+	}
+}
+
+on_adm_development = {
+	on_development_effect = { type = adm }
+	#YATW
+	events = {
+		YW_nature.7
+		YW_nature.8
+		YW_nature.18
+	}
+	#
+	on_adm_development_effect = yes
+}
+
+# province
+on_dip_development = {
+	on_development_effect = { type = dip }
+	#YATW
+	events = {
+		YW_nature.7
+		YW_nature.8
+		YW_nature.18
+	}
+	#
+	on_dip_development_effect = yes
+}
+
+# province
+on_mil_development = {
+	on_development_effect = { type = mil }
+	#YATW
+	events = {
+		YW_nature.7
+		YW_nature.8
+		YW_nature.18
+	}
+	#
+
+}
+
+on_bi_yearly_pulse = {
+	random_events = {
+		10 = YW_power.1
+		10 = YW_power.2
+		10 = YW_power.3
+		10 = YW_power.4
+		10 = YW_power.5
+		10 = YW_power.6
+		10 = YW_power.7
+		5 = YW_power.8
+		10 = YW_power.9
+		5 = YW_power.10
+		500 = 0
+	}
+}

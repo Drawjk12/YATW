@@ -1,0 +1,144 @@
+custom_icon = {
+    name = ruler_race_icons #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_ruler_flag = race_aosi
+			has_ruler_flag = race_danuatha
+			has_ruler_flag = race_fae
+			has_ruler_flag = race_mushi
+			AND = {
+				has_regency = yes
+				OR = {
+					has_consort_flag = race_aosi
+					has_consort_flag = race_danuatha
+					has_consort_flag = race_fae
+					has_consort_flag = race_mushi
+				}
+			}
+		}
+	}
+    tooltip = RulerRaceIconTT #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 3 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			OR = {
+				has_ruler_flag = race_danuatha
+				AND = {
+					has_consort_regency = yes
+					has_consort_flag = race_danuatha
+				}
+			}
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 2 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			OR = {
+				has_ruler_flag = race_fae
+				AND = {
+					has_consort_regency = yes
+					has_consort_flag = race_fae
+				}
+			}
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 4 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			OR = {
+				has_ruler_flag = race_aosi
+				AND = {
+					has_consort_regency = yes
+					has_consort_flag = ace_aosi
+				}
+			}
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 1 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			OR = {
+				has_ruler_flag = race_mushi
+				AND = {
+					has_consort_regency = yes
+					has_consort_flag = race_mushi
+				}
+			}
+		}
+    }
+}
+
+custom_icon = {
+    name = heir_race_icons #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_heir_flag = race_aosi
+			has_heir_flag = race_danuatha
+			has_heir_flag = race_fae
+			has_heir_flag = race_mushi
+		}
+	}
+    tooltip = HeirRaceIconTT #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 3 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = race_danuatha
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 2 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = race_fae
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 4 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = race_aosi
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 1 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_heir_flag = race_mushi
+		}
+    }
+}
+
+custom_icon = {
+    name = consort_race_icons #Must match a scripted iconType in a .gui file
+    potential = {
+		OR = {
+			has_consort_flag = race_aosi
+			has_consort_flag = race_danuatha
+			has_consort_flag = race_fae
+			has_consort_flag = race_mushi
+		}
+		NOT = { has_consort_regency = yes }
+	}
+    tooltip = ConsortRaceIconTT #Can use customizable localisation
+    frame = {  #Can define multiple frame clauses
+        number = 3 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = race_danuatha
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 2 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = race_fae
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 4 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = race_aosi
+		}
+    }
+    frame = {  #Can define multiple frame clauses
+        number = 1 #Which frame to use. Check dds files with multiple icons like icon_religion.dds
+        trigger = {
+			has_consort_flag = race_mushi
+		}
+    }
+}

@@ -1,0 +1,89 @@
+defined_text = {
+    name = RulerRaceIconTT
+	random = no
+
+    text = {
+        localisation_key = race_danuatha
+        trigger = {
+			has_ruler_flag = race_danuatha
+        }
+    }
+    text = {
+        localisation_key = race_fae
+        trigger = {
+			has_ruler_flag = race_fae
+        }
+    }
+    text = {
+        localisation_key = race_aosi
+        trigger = {
+			has_ruler_flag = race_aosi
+        }
+    }
+    text = {
+        localisation_key = race_mushi
+        trigger = {
+			has_ruler_flag = race_mushi
+        }
+    }
+}
+
+defined_text = {
+    name = HeirRaceIconTT
+	random = no
+
+    text = {
+        localisation_key = race_danuatha
+        trigger = {
+			has_heir_flag = race_danuatha
+        }
+    }
+    text = {
+        localisation_key = race_fae
+        trigger = {
+			has_heir_flag = race_fae
+        }
+    }
+    text = {
+        localisation_key = race_aosi
+        trigger = {
+			has_heir_flag = race_aosi
+        }
+    }
+    text = {
+        localisation_key = race_mushi
+        trigger = {
+			has_heir_flag = race_mushi
+        }
+    }
+}
+
+defined_text = {
+    name = ConsortRaceIconTT
+	random = no
+
+    text = {
+        localisation_key = race_danuatha
+        trigger = {
+			has_consort_flag = race_danuatha
+        }
+    }
+    text = {
+        localisation_key = race_fae
+        trigger = {
+			has_consort_flag = race_fae
+        }
+    }
+    text = {
+        localisation_key = race_aosi
+        trigger = {
+			has_consort_flag = race_aosi
+        }
+    }
+    text = {
+        localisation_key = race_mushi
+        trigger = {
+			has_consort_flag = race_mushi
+        }
+    }
+}

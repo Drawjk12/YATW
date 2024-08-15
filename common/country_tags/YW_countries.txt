@@ -1,0 +1,131 @@
+# Special countries..
+REB = "countries/Rebels.txt"
+PIR = "countries/Pirates.txt"
+NAT = "countries/Natives.txt"
+
+#YATW
+
+#The Four Kingdoms
+KOL = "countries/LifeKingdom.txt" #Kingdom of Life (Droym) (Water Earth)
+KOT = "countries/TimeKingdom.txt" #Kingdom of Time (Hephus) (Fire Earth)
+KOC = "countries/TradeKingdom.txt" #Kingdom of Commerce (Merfi) (Water Air)
+KOR = "countries/LightKingdom.txt" #Kingdom of Lights (Hypeiron) (Fire)
+
+#Hypeiron Vassals
+KRI = "countries/Okaeri.txt"
+
+#Merfi Vassals
+KCD = "countries/Desmone.txt"
+KCU = "countries/Usirf.txt"
+
+#Hephus Vassals
+KTL = "countries/Lebeon.txt"
+KTG = "countries/Georus.txt"
+KTN = "countries/Naplis.txt"
+
+#Droym Vassals
+
+#Orterre OPMs (Irish names)
+OOM = "countries/Ormeif.txt"
+OCL = "countries/Colai.txt"
+OWP = "countries/Whitapale.txt"
+OCT = "countries/Conaodh.txt"
+OAI = "countries/Ailise.txt"
+OEO = "countries/Eorire.txt"
+ODR = "countries/Dreidi.txt"
+OSA = "countries/Saosice.txt"
+OED = "countries/Eadain.txt"
+OFT = "countries/Farthsana.txt"
+OGD = "countries/Godine.txt"
+OIR = "countries/Ire.txt"
+ONU = "countries/Nula.txt"
+ORI = "countries/Rite.txt"
+OCI = "countries/Cailn.txt"
+ODO = "countries/Donai.txt"
+OLA = "countries/Lochief.txt"
+OLM = "countries/Lomai.txt"
+OMN = "countries/Manchaca.txt"
+ORO = "countries/Rona.txt"
+OTG = "countries/Tadge.txt"
+OBR = "countries/Barbi.txt"
+OHF = "countries/Hiltf.txt"
+ONL = "countries/Nolai.txt"
+OPE = "countries/Peil.txt"
+OPA = "countries/Padagai.txt"
+OMC = "countries/Micle.txt"
+OOC = "countries/Ocaistin.txt"
+OUL = "countries/Uilla.txt"
+OSL = "countries/Slawn.txt"
+OFW = "countries/Fawcha.txt"
+OBD = "countries/Biodhea.txt"
+OSR = "countries/Sporr.txt"
+OCC = "countries/Culck.txt"
+OLN = "countries/Leann.txt"
+OSE = "countries/Sceail.txt"
+OUG = "countries/Usigea.txt"
+OAY = "countries/Ayai.txt" #
+OFL = "countries/Falti.txt" #
+
+#Monodon (names taken from the same genus)
+MAC = "countries/Macadona.txt"
+
+GEY = "countries/Geyso.txt"
+UYU = "countries/Uylua.txt"
+CKO = "countries/Ckors.txt"
+AIL = "countries/Ailia.txt"
+DEL = "countries/Delphie.txt"
+LAG = "countries/Lagenso.txt"
+SOU = "countries/Sousa.txt"
+TUR = "countries/Tursi.txt"
+GLO = "countries/Globiephi.txt"
+AST = "countries/Astedle.txt"
+FER = "countries/Ferasia.txt"
+ORC = "countries/Orcae.txt"
+STE = "countries/Stella.txt"
+EOD = "countries/Eodesa.txt"
+KEN = "countries/Kentria.txt"
+LEP = "countries/Lesophen.txt"
+ATO = "countries/Atolice.txt"
+BOH = "countries/Bohithesia.txt"
+ODT = "countries/Odothen.txt"
+PHO = "countries/Phoceansi.txt"
+
+#Amobe (amoeba)
+OPI = "countries/Opimo.txt"
+POD = "countries/Poditi.txt"
+LOK = "countries/Loukozo.txt"
+CRM = "countries/Crumli.txt"
+AMP = "countries/Amorp.txt"
+OBA = "countries/Obazi.txt"
+BRV = "countries/Breviti.txt"
+OPO = "countries/Opithono.txt"
+FUN = "countries/Fungiti.txt"
+ANI = "countries/Animi.txt"
+TUB = "countries/Tublizo.txt"
+DSC = "countries/Discozi.txt"
+EVO = "countries/Evop.txt"
+DIO = "countries/Diopho.txt"
+RHI = "countries/Rhizari.txt"
+CYO = "countries/Chayo.txt"
+HYD = "countries/Hydep.txt"
+STG = "countries/Stigamo.txt"
+PRK = "countries/Paracki.txt"
+CHD = "countries/Chaido.txt"
+EUK = "countries/Eukria.txt"
+VIR = "countries/Viriditi.txt"
+HOL = "countries/Holormp.txt"
+PRO = "countries/Proviso.txt"
+
+#Brachy (crab)
+BRA = "countries/Brachuya.txt"
+ANO = "countries/Anomuya.txt"
+GBD = "countries/Gebide.txt"
+AXI = "countries/Axii.txt"
+RPT = "countries/Repatura.txt"
+ACD = "countries/Aciduya.txt"
+PLC = "countries/Polchele.txt"
+ACH = "countries/Achelta.txt"
+PCY = "countries/Plocyura.txt"
+CRD = "countries/Caride.txt"
+PRA = "countries/Praride.txt"
+SNP = "countries/Stenopele.txt"

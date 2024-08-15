@@ -1,0 +1,39 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_race_icons"
+		texturefile = "gfx//interface//YATW_icons//race_icons.dds"
+		noOfFrames = 4
+		loadType = "INGAME"
+	}
+	
+	spriteType = {
+		name = "GFX_race_icons_small"
+		texturefile = "gfx//interface//YATW_icons//race_icons_small.dds"
+		noOfFrames = 4
+		loadType = "INGAME"
+	}
+	
+	spriteType = {
+		name = "GFX_power_icons"
+		texturefile = "gfx//interface//YATW_icons//power_icons.dds"
+		noOfFrames = 5
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_magic_power_icon"
+		texturefile = "gfx//interface//YATW_icons//magic_power.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_obj_fae_ruler"
+		texturefile = "gfx/interface/ages/obj_great_general.dds"
+	}
+	spriteType = {
+		name = "GFX_obj_expand_frontier"
+		texturefile = "gfx/interface/ages/obj_huge_capital.dds"
+	}
+	spriteType = {
+		name = "GFX_obj_feudalism"
+		texturefile = "gfx/interface/ages/obj_humanism_religious.dds"
+	}
+}

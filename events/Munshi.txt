@@ -1,0 +1,49 @@
+namespace = YW_munshi
+
+country_event = { #Tempt to change to theocracy
+	id = YW_munshi.1
+	title = YW_munshi.1.t
+	desc = YW_munshi.1.d
+	picture = GREAT_BUILDING_eventPicture
+
+	trigger = {
+		religion = munshi
+		NOT = { has_reform = munshi_theo_reform }
+	}
+	
+	mean_time_to_happen = {
+		months = 100
+	}
+
+	option = {
+		name = YW_munshi.1.a
+		change_government = monarchy
+		add_government_reform = munshi_theo_reform
+		add_absolutism = 10
+	}
+	option = {
+		name = YW_munshi.1.b
+		add_legitimacy = 10
+		add_stability = 1
+	}
+	
+	after = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					NOT = { religion = munshi }
+				}
+				add_unrest = 10
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						NOT = { religion = munshi }
+					}
+					create_revolt = 1
+					add_base_manpower = -1
+				}
+			}
+		}
+	}
+}

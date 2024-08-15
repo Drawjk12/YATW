@@ -1,0 +1,21 @@
+name = "The Wars of Light and Fire"
+war_goal = {
+	type = take_claim
+	casus_belli = cb_fabricated_claims
+	province = 1735 # Surat
+}
+
+100.11.1 = {
+	add_attacker = KOR
+	add_defender = KOL
+}
+
+150.1.1 = {
+	add_attacker = KOT
+}
+
+175.1.1 = {
+	rem_defender = KOL
+	rem_attacker = KOR
+	rem_attacker = KOT
+}

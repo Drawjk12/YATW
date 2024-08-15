@@ -1,0 +1,12 @@
+within_distance_from_river = {
+	any_owned_province = {
+		NOT = {
+			river_of_life = {
+				province_distance = {
+					who = PREV
+					distance = $DISTANCE$
+				}
+			}
+		}
+	}
+}

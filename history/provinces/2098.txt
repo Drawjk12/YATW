@@ -1,0 +1,11 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 1
+
+owner = OBD
+add_core = OBD
+
+culture = anann
+
+religion = mushi

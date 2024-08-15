@@ -1,0 +1,8 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 0
+
+culture = uasi
+
+religion = mushi

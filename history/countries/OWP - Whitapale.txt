@@ -1,0 +1,7 @@
+government = republic
+add_government_reform = race_power_reform
+government_rank = 1
+technology_group = western
+religion = mushi
+primary_culture = aosi_culture
+capital = 2982

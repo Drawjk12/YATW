@@ -1,0 +1,551 @@
+add_race_and_power = { #ruler/heir/consort (not random heir unless new ruler)
+	[[ruler]
+		random_list = {
+			15 = {
+				set_ruler_flag = race_fae
+				add_ruler_modifier = { 
+					name = fae_ruler_mod
+					duration = -1
+					hidden = yes
+				}
+				random_list = {
+					25 = { set_ruler_flag = power_earth }
+					25 = { set_ruler_flag = power_air }
+					25 = { set_ruler_flag = power_water }
+					25 = { set_ruler_flag = power_fire }
+				}
+				add_ruler_personality = immortal_personality
+				country_event = { id = YW_race.1 }
+				random = {
+					chance = 50
+					change_adm = -2
+				}
+				random = {
+					chance = 50
+					change_dip = -2
+				}
+				random = {
+					chance = 50
+					change_mil = 1
+				}
+				modifier = {
+					factor = 1.1
+					has_reform = race_power_reform
+				}
+				modifier = {
+					factor = 0.5
+					NOT = { within_distance_from_river = { DISTANCE = 3300 } }
+				}
+				modifier = {
+					factor = 2
+					within_distance_from_river = { DISTANCE = 2700 }
+				}
+			}
+			75 = {
+				set_ruler_flag = race_danuatha
+				add_ruler_modifier = { 
+					name = danuatha_ruler_mod
+					duration = -1
+					hidden = yes
+				}
+				random_list = {
+					25 = { set_ruler_flag = power_earth }
+					25 = { set_ruler_flag = power_air }
+					25 = { set_ruler_flag = power_water }
+					25 = { set_ruler_flag = power_fire }
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_earth
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_air
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_water
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_fire
+				}
+				modifier = {
+					factor  = 0.01
+					has_reform = race_power_reform
+				}
+			}
+			10 = {
+				set_ruler_flag = race_aosi
+				random_list = {
+					25 = { set_ruler_flag = power_earth }
+					25 = { set_ruler_flag = power_air }
+					25 = { set_ruler_flag = power_water }
+					25 = { set_ruler_flag = power_fire }
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_earth
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_air
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_water
+				}
+				random = {
+					chance = 10
+					set_ruler_flag = power_fire
+				}
+				if = {
+					limit = {
+						has_reform = race_power_reform
+					}
+					random_list = {
+						25 = { set_ruler_flag = power_earth }
+						25 = { set_ruler_flag = power_air }
+						25 = { set_ruler_flag = power_water }
+						25 = { set_ruler_flag = power_fire }
+					}
+				}
+				random = {
+					chance = 50
+					change_adm = 1
+				}
+				random = {
+					chance = 50
+					change_dip = 1
+				}
+				random = {
+					chance = 50
+					change_mil = -1
+				}
+				modifier = {
+					factor = 0.05
+					has_reform = race_power_reform
+				}
+				modifier = {
+					factor = 5
+					within_distance_from_river = { DISTANCE = 3300 }
+				}
+				modifier = {
+					factor  = 0
+					has_reform = race_power_reform
+				}
+			}
+		}
+	]
+	[[heir]
+		random_list = {
+			15 = {
+				set_heir_flag = race_fae
+				add_ruler_personality = immortal_personality
+				add_ruler_modifier = { 
+					name = fae_ruler_mod
+					duration = -1 
+					hidden = yes
+				}
+				random_list = {
+					25 = {
+						set_heir_flag = power_earth
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_earth
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_earth
+						}
+					}
+					25 = {
+						set_heir_flag = power_air
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_air
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_air
+						}
+					}
+					25 = {
+						set_heir_flag = power_water
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_water
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_water
+						}
+					}
+					25 = {
+						set_heir_flag = power_fire
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_fire
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_fire
+						}
+					}
+				}
+				random = {
+					chance = 50
+					change_adm = -2
+				}
+				random = {
+					chance = 50
+					change_dip = -2
+				}
+				random = {
+					chance = 50
+					change_mil = 1
+				}
+				modifier = {
+					factor = 0.5
+					has_ruler_flag = race_danuatha
+				}
+				modifier = {
+					factor = 0.5
+					NOT = { within_distance_from_river = { DISTANCE = 3300 } }
+				}
+				modifier = {
+					factor = 2
+					within_distance_from_river = { DISTANCE = 2700 }
+				}
+			}
+			75 = {
+				set_heir_flag = race_danuatha
+				add_ruler_modifier = { 
+					name = danuatha_ruler_mod
+					duration = -1
+					hidden = yes
+				}
+				random_list = {
+					25 = {
+						set_heir_flag = power_earth
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_earth
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_earth
+						}
+					}
+					25 = {
+						set_heir_flag = power_air
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_air
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_air
+						}
+					}
+					25 = {
+						set_heir_flag = power_water
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_water
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_water
+						}
+					}
+					25 = {
+						set_heir_flag = power_fire
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_fire
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_fire
+						}
+					}
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_earth
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_air
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_water
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_fire
+				}
+				modifier = {
+					factor = 0.8
+					has_ruler_flag = race_aosi
+				}
+				modifier = {
+					factor  = 0.01
+					has_reform = race_power_reform
+				}
+			}
+			10 = {
+				set_heir_flag = race_aosi
+				random_list = {
+					25 = {
+						set_heir_flag = power_earth
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_earth
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_earth
+						}
+					}
+					25 = {
+						set_heir_flag = power_air
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_air
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_air
+						}
+					}
+					25 = {
+						set_heir_flag = power_water
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_water
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_water
+						}
+					}
+					25 = {
+						set_heir_flag = power_fire
+						modifier = {
+							factor = 2
+							has_ruler_flag = power_fire
+						}
+						modifier = {
+							factor = 2
+							has_consort_flag = power_fire
+						}
+					}
+				}
+				random_list = {
+					10 = { set_ruler_flag = power_earth }
+					10 = { set_ruler_flag = power_air }
+					10 = { set_ruler_flag = power_water }
+					10 = { set_ruler_flag = power_fire }
+					60 = {}
+				}
+				random = {
+					chance = 10
+					set_heir_flag = power_earth
+				}
+				random = {
+					chance = 10
+					set_heir_flag = power_air
+				}
+				random = {
+					chance = 10
+					set_heir_flag = power_water
+				}
+				random = {
+					chance = 10
+					set_heir_flag = power_fire
+
+				}
+				random = {
+					chance = 50
+					change_adm = 1
+				}
+				random = {
+					chance = 50
+					change_dip = 1
+				}
+				random = {
+					chance = 50
+					change_mil = -1
+				}
+				modifier = {
+					factor = 0.5
+					has_ruler_flag = race_fae
+				}
+				modifier = {
+					factor = 0.5
+					has_consort_flag = race_fae
+				}
+				modifier = {
+					factor = 5
+					has_ruler_flag = race_danuatha
+				}
+				modifier = {
+					factor = 5
+					has_consort_flag = race_danuatha
+				}
+				modifier = {
+					factor = 5
+					within_distance_from_river = { DISTANCE = 3300 }
+				}
+				modifier = {
+					factor  = 0
+					has_reform = race_power_reform
+				}
+			}
+		}
+	]
+	[[consort]
+		random_list = {
+			15 = {
+				set_consort_flag = race_fae
+				add_ruler_personality = immortal_personality
+				add_ruler_modifier = { 
+					name = fae_ruler_mod
+					duration = -1
+					hidden = yes
+				}
+				random_list = {
+					25 = { set_consort_flag = power_earth }
+					25 = { set_consort_flag = power_air }
+					25 = { set_consort_flag = power_water }
+					25 = { set_consort_flag = power_fire }
+				}
+				random = {
+					chance = 50
+					change_adm = -2
+				}
+				random = {
+					chance = 50
+					change_dip = -2
+				}
+				random = {
+					chance = 50
+					change_mil = 1
+				}
+				modifier = {
+					factor = 0.5
+					has_ruler_flag = race_danuatha
+				}
+				modifier = {
+					factor = 0.5
+					NOT = { within_distance_from_river = { DISTANCE = 3300 } }
+				}
+				modifier = {
+					factor = 2
+					within_distance_from_river = { DISTANCE = 2700 }
+				}
+			}
+			75 = {
+				set_consort_flag = race_danuatha
+				add_ruler_modifier = { 
+					name = danuatha_ruler_mod
+					duration = -1
+					hidden = yes
+				}
+				random_list = {
+					25 = { set_consort_flag = power_earth }
+					25 = { set_consort_flag = power_air }
+					25 = { set_consort_flag = power_water }
+					25 = { set_consort_flag = power_fire }
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_earth
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_air
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_water
+				}
+				random = {
+					chance = 5
+					set_ruler_flag = power_fire
+				}
+				modifier = {
+					factor = 0.8
+					has_ruler_flag = race_aosi
+				}
+				modifier = {
+					factor  = 0.01
+					has_reform = race_power_reform
+				}
+			}
+			10 = {
+				set_consort_flag = race_aosi
+				random_list = {
+					25 = { set_consort_flag = power_earth }
+					25 = { set_consort_flag = power_air }
+					25 = { set_consort_flag = power_water }
+					25 = { set_consort_flag = power_fire }
+				}
+				random_list = {
+					10 = { set_ruler_flag = power_earth }
+					10 = { set_ruler_flag = power_air }
+					10 = { set_ruler_flag = power_water }
+					10 = { set_ruler_flag = power_fire }
+					60 = {}
+				}
+				random = {
+					chance = 10
+					set_consort_flag = power_earth
+				}
+				random = {
+					chance = 10
+					set_consort_flag = power_air
+				}
+				random = {
+					chance = 10
+					set_consort_flag = power_water
+				}
+				random = {
+					chance = 10
+					set_consort_flag = power_fire
+				}
+				random = {
+					chance = 50
+					change_adm = 1
+				}
+				random = {
+					chance = 50
+					change_dip = 1
+				}
+				random = {
+					chance = 50
+					change_mil = -1
+				}
+				modifier = {
+					factor = 0.5
+					has_ruler_flag = race_fae
+				}
+				modifier = {
+					factor = 5
+					has_ruler_flag = race_danuatha
+				}
+				modifier = {
+					factor = 5
+					within_distance_from_river = { DISTANCE = 3300 }
+				}
+				modifier = {
+					factor  = 0
+					has_reform = race_power_reform
+				}
+			}
+		}
+	]
+}

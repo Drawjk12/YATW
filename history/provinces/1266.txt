@@ -1,0 +1,11 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 0
+
+owner = OBA
+add_core = OBA
+
+culture = aegijsha
+
+religion = mushi

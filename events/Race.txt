@@ -1,0 +1,91 @@
+namespace = YW_race
+
+country_event = { #Fae Ruler
+	id = YW_race.1
+	title = YW_race.1.t
+	desc = YW_race.1.d
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		hidden_effect = {
+			add_stability = 1
+			add_corruption = 1
+		}
+	}
+
+	option = {
+		name = YW_race.1.a
+		tooltip = {
+			add_stability = 1
+			add_corruption = 1
+			add_legitimacy = 50
+		}
+	}
+}
+
+
+
+country_event = { #Fae born
+	id = YW_race.2
+	title = YW_race.2.t
+	desc = YW_race.2.d
+	picture = GOOD_WITH_MONARCH_eventPicture
+	
+	trigger = {
+		has_reform = race_power_reform
+	}
+	
+	mean_time_to_happen = {
+		years = 125
+		modifier = {
+			factor = 10
+			NOT = { within_distance_from_river = { DISTANCE = 3900 } }
+		}
+		modifier = {
+			factor = 10
+			NOT = { within_distance_from_river = { DISTANCE = 3600 } }
+		}
+		modifier = {
+			factor = 10
+			NOT = { within_distance_from_river = { DISTANCE = 3300 } }
+		}
+		modifier = {
+			factor = 0.5
+			within_distance_from_river = { DISTANCE = 3000 }
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			define_ruler = {
+			}
+			clr_ruler_flag = race_aosi
+			clr_ruler_flag = race_danuatha
+			clr_ruler_flag = race_fae
+			clr_ruler_flag = race_mushi
+			clr_ruler_flag = power_air
+			clr_ruler_flag = power_water
+			clr_ruler_flag = power_earth
+			clr_ruler_flag = power_fire
+			random_list = {
+				25 = { set_ruler_flag = power_earth }
+				25 = { set_ruler_flag = power_air }
+				25 = { set_ruler_flag = power_water }
+				25 = { set_ruler_flag = power_fire }
+			}
+			set_ruler_flag = race_fae
+			add_ruler_personality = immortal_personality
+		}
+	}
+
+	option = {
+		name = YW_race.2.a
+		add_legitimacy = 50
+	}
+}

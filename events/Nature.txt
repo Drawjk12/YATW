@@ -1,0 +1,1476 @@
+namespace = YW_nature
+
+province_event = { #Province
+	id = YW_nature.1
+	title = YW_nature.1.t
+	desc = YW_nature.1.d
+	picture = CITY_DEVELOPMENT_eventPicture
+	
+	trigger = {
+		development = 20
+		OR = {
+			AND = {
+				base_tax = 6
+				base_production = 8
+			}
+			AND = {
+				base_tax = 8
+				base_production = 6
+			}
+		}
+		OR = {
+			fort_level = 1
+			development = 50
+			any_neighbor_province = {
+				development = 20
+				fort_level = 2
+				num_of_buildings_in_province = 3
+			}
+			any_neighbor_province = {
+				num_of_buildings_in_province = 5
+				development = 25
+				base_tax = 10
+				base_production = 10
+				any_neighbor_province = {
+					fort_level = 5
+				}
+			}
+		}
+		owner = {
+			stability = 0
+			treasury = 100
+			is_bankrupt = no
+		}
+		OR = {
+			any_empty_neighbor_province = { 
+				is_empty = yes
+			}
+			has_empty_adjacent_province = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 2.5
+			owner = {
+				any_owned_province = {
+					has_province_modifier = left_to_die
+				}
+			}
+		}
+		modifier = {
+			factor = 10
+			owner = {
+				OR = {
+					has_idea_group = exploration_ideas
+					has_idea_group = expansion_ideas
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			development = 24
+		}
+		modifier = {
+			factor = 0.5
+			development = 50
+		}
+	}
+
+	option = {
+		name = YW_nature.1.a
+		random_empty_neighbor_province  = {
+			create_colony = 250
+		}
+		owner = {
+			add_treasury = -250
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 10
+				owner = {
+					treasury = 500
+				}
+			}
+			modifier = {
+				factor = 2
+				owner = {
+					monthly_income = 4
+				}
+			}
+		}
+	}
+	option = {
+		name = YW_nature.1.b
+		random_empty_neighbor_province = {
+			create_colony = 100
+			add_province_modifier = { 
+				name = left_to_die
+				duration = 2555
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 10
+				owner = {
+					NOT = { treasury = 250 }
+				}
+			}
+		}
+	}
+	option = {
+		name = YW_nature.1.c
+		add_unrest = 2
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+
+province_event = { #Start Blight
+	id = YW_nature.2
+	title = YW_nature.2.t
+	desc = YW_nature.2.d
+	picture = FAMINE_eventPicture
+
+	trigger = {
+		OR = {
+			trade_goods = grain
+			trade_goods = cocoa
+			trade_goods = cotton
+			trade_goods = tobacco
+		}
+		NOT = { has_province_modifier = crop_failure }
+		OR = {
+			has_winter = mild_winter
+			has_winter = normal_winter
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 2400
+		modifier = {
+			factor = 0.75
+			any_neighbor_province = {
+				is_empty = yes
+			}
+		}
+	}
+
+	immediate =  {
+		add_province_modifier = { 
+			name = blight_modifier
+			duration = 1825
+		}
+		hidden_effect = {
+			set_variable = {
+				which = blightCost
+				value = 5
+			}
+			owner = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = grain
+							trade_goods = cocoa
+							trade_goods = cotton
+							trade_goods = tobacco
+						}
+					}
+					ROOT = {
+						change_variable = {
+							which = blightCost
+							value = 2.5
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.2.a
+		if = {
+			limit = { 
+				NOT = { check_variable = { which = blightCost value = 10 } }
+			}
+			owner = {
+				add_treasury = -10
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { which = blightCost value = 10 }
+				NOT = { check_variable = { which = blightCost value = 25 } }
+			}
+			owner = {
+				add_treasury = -25
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { which = blightCost value = 25 }
+				NOT = { check_variable = { which = blightCost value = 50 } }
+			}
+			owner = {
+				add_treasury = -50
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { which = blightCost value = 50 }
+				NOT = { check_variable = { which = blightCost value = 100 } }
+			}
+			owner = {
+				add_treasury = -100
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { which = blightCost value = 100 }
+			}
+			owner = {
+				add_treasury = -250
+			}
+		}
+		else = {
+			log = "NATURE: [Root.blightCost.GetValue] is not an accepted value"
+		}
+		owner = {
+			set_country_flag = blight_relief
+		}
+	}
+	option = {
+		name = YW_nature.2.c
+		add_province_modifier = { 
+			name = burned_crops
+			duration = 1825
+		}
+		random = {
+			chance = 75
+			hidden_effect = {
+				remove_province_modifier = blight_modifier
+			}
+		}
+	}
+}
+
+province_event = { #Spread Blight Neighbor
+	id = YW_nature.3
+	title = YW_nature.3.t
+	desc = YW_nature.3.d
+	picture = FAMINE_eventPicture
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_province_modifier = crop_failure }
+		NOT = { has_province_modifier = burned_crops }
+		OR = {
+			AND = {
+				trade_goods = grain
+				any_neighbor_province = {
+					trade_goods = grain
+					has_province_modifier = blight_modifier
+				}
+			}
+			AND = {
+				trade_goods = cocoa
+				any_neighbor_province = {
+					trade_goods = cocoa
+					has_province_modifier = blight_modifier
+				}
+			}
+			AND = {
+				trade_goods = cotton
+				any_neighbor_province = {
+					trade_goods = cotton
+					has_province_modifier = blight_modifier
+				}
+			}
+			AND = {
+				trade_goods = tobacco
+				any_neighbor_province = {
+					trade_goods = tobacco
+					has_province_modifier = blight_modifier
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+		modifier = {
+			factor = 20
+			owner = {
+				has_country_flag = blight_relief
+			}
+		}
+	}
+	
+	immediate = {
+		add_permanent_province_modifier = { 
+			name = blight_modifier
+			duration = 1825
+		}
+	}
+
+	option = {
+		name = YW_nature.3.a
+	}
+}
+
+province_event = { #Blight Dev Loss
+	id = YW_nature.4
+	title = YW_nature.4.t
+	desc = YW_nature.4.d
+	picture = FAMINE_eventPicture
+	hidden = yes
+	
+	trigger = {
+		has_province_modifier = blight_modifier
+		owner = {
+			NOT = { has_country_flag = blight_relief }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	immediate = {
+		add_base_production = -1
+		add_devastation = 5
+		province_event = { 
+			id = YW_nature.7
+		}
+		province_event = { 
+			id = YW_nature.8
+		}
+		province_event = { 
+			id = YW_nature.18
+		}
+	}
+
+	option = {
+		name = YW_nature.4.a
+	}
+}
+
+province_event = { #Crop Failure
+	id = YW_nature.5
+	title = YW_nature.5.t
+	desc = YW_nature.5.d
+	picture = FAMINE_eventPicture
+	hidden = yes
+
+	trigger = {
+		OR = {
+			trade_goods = grain
+			trade_goods = cocoa
+			trade_goods = cotton
+			trade_goods = tobacco
+		}
+		NOT = { has_province_modifier = blight_modifier }
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	immediate = {
+		random = { 
+			chance = 10
+			add_permanent_province_modifier = { 
+				name = crop_failure
+				duration = 400
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.5.a
+	}
+}
+
+province_event = { #Animal Disease
+	id = YW_nature.6
+	title = YW_nature.6.t
+	desc = YW_nature.6.d
+	picture = FARMING_eventPicture
+	hidden = yes
+
+	trigger = {
+		OR = {
+			trade_goods = fish
+			trade_goods = fur
+			trade_goods = livestock
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = YW_nature.6.a
+		add_permanent_province_modifier = { 
+			name = animal_disease
+			duration = 700
+		}
+	}
+}
+
+province_event = { #High Taxes
+	id = YW_nature.7
+	title = YW_nature.7.t
+	desc = YW_nature.7.d
+	picture = ENCOMIENDA_eventPicture
+	hidden = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { is_empty = yes } 
+		base_tax = 3
+	}
+
+	immediate = {
+		export_to_variable = {
+			which = prov_dev
+			value = development
+		}
+		export_to_variable = {
+			which = tax_dev
+			value = base_tax
+		}
+		divide_variable = { which = tax_dev which = prov_dev }
+		if = {
+			limit = {
+				check_variable = {
+					which = tax_dev
+					value = 0.425
+				}
+			}
+			add_province_modifier = { 
+				name = high_taxes
+				duration = -1
+			}
+		}
+		else = {
+			remove_province_modifier = high_taxes
+		}
+	}
+
+	option = {
+		name = YW_nature.7.a
+	}
+}
+
+province_event = { #Slum Checker
+	id = YW_nature.8
+	title = YW_nature.8.t
+	desc = YW_nature.8.d
+	picture = ENCOMIENDA_eventPicture
+	hidden = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { is_empty = yes }
+		development = 4
+	}
+
+	immediate = {
+		export_to_variable = {
+			which = prov_dev
+			value = development
+		}
+		export_to_variable = {
+			which = prod_dev
+			value = base_production
+		}
+		divide_variable = { which = prod_dev which = prov_dev }
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = prod_dev
+						value = 0.25
+					}
+				}
+			}
+			add_permanent_province_modifier = { 
+				name = extensive_slums
+				duration = -1
+			}
+		}
+		else = {
+			remove_province_modifier = extensive_slums
+		}
+	}
+
+	option = {
+		name = YW_nature.8.a
+	}
+}
+
+province_event = { #Focus Dev
+	id = YW_nature.9
+	title = YW_nature.9.t
+	desc = YW_nature.9.d
+	picture = ENCOMIENDA_eventPicture
+	hidden = yes
+
+	trigger = {
+		is_state = yes
+		NOT = { unrest = 2 }
+		NOT = { devastation = 75 }
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 2
+			devastation = 50
+		}
+		modifier = {
+			factor = 2
+			devastation = 25
+		}
+		modifier = {
+			factor = 2
+			devastation = 10
+		}
+		modifier = {
+			factor = 1.1
+			devastation = 1
+		}
+		modifier = {
+			factor = 2.5
+			OR = {
+				has_province_modifier = blight_modifier
+				has_province_modifier = crop_failure
+				has_province_modifier = animal_disease
+				has_province_modifier = high_taxes
+				has_province_modifier = extensive_slums
+				has_province_modifier = poor_facilities
+			}
+		}
+		modifier = {
+			factor = 1.5
+			owner = {
+				num_of_loans = 2
+			}
+		}
+		modifier = {
+			factor = 1.5
+			owner = {
+				num_of_loans = 5
+			}
+		}
+		modifier = {
+			factor = 1.5
+			owner = {
+				num_of_loans = 10
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				any_neighbor_province = {
+					fort_level = 2
+				}
+				fort_level = 1
+			}
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				any_neighbor_province = {
+					fort_level = 3
+				}
+				fort_level = 2
+			}
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { unrest = 1 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				stability = 3
+			}
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				owner = {
+					stability = 0
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			NOT = {
+				owner = {
+					stability = 2
+				}
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_neighbor_province = {
+				higher_development_than = ROOT
+			}
+		}
+		modifier = {
+			factor = 0.75
+			is_capital = yes
+		}
+		modifier = {
+			factor = 0.85
+			is_in_capital_area = yes
+		}
+		modifier = {
+			factor = 0.8
+			province_has_center_of_trade_of_level = 1
+		}
+		modifier = {
+			factor = 0.8
+			province_has_center_of_trade_of_level = 2
+		}
+		modifier = {
+			factor = 0.8
+			province_has_center_of_trade_of_level = 3
+		}
+		modifier = { #cheat because they wont develop provinces as much
+			factor = 0.8
+			owner = {
+				ai = yes
+			}
+			is_state = yes
+		}
+		modifier = { #cheat because they wont develop provinces as much
+			factor = 0.8
+			owner = {
+				ai = yes
+			}
+			is_capital = yes
+		}
+		modifier = {
+			factor = 0.8
+			num_of_times_improved_by_owner = 20
+		}
+		modifier = {
+			factor = 2
+			NOT = { development = 10 }
+		}
+		modifier = { #cheat because they wont develop provinces as much
+			factor = 0.95
+			owner = {
+				ai = yes
+			}
+			has_empty_adjacent_province = yes
+		}
+		modifier = {
+			factor = 5
+			owner = {
+				governing_capacity_percentage = 1
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				owner = {
+					national_focus = ADM
+					NOT = { corruption = 3 }
+				}
+			}
+			random_list = {
+				50 = {
+					add_base_tax = 1
+				}
+				25 = {
+					add_base_production = 1
+				}
+				25 = {
+					add_base_manpower = 1
+					modifier = {
+						factor = 2
+						owner = {
+							is_at_war = yes
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					national_focus = DIP
+					NOT = { corruption = 3 }
+				}
+			}
+			random_list = {
+				25 = {
+					add_base_tax = 1
+				}
+				50 = {
+					add_base_production = 1
+				}
+				25 = {
+					add_base_manpower = 1
+					modifier = {
+						factor = 2
+						owner = {
+							is_at_war = yes
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					national_focus = MIL
+					NOT = { corruption = 3 }
+				}
+			}
+			random_list = {
+				25 = {
+					add_base_tax = 1
+				}
+				25 = {
+					add_base_production = 1
+				}
+				50 = {
+					add_base_manpower = 1
+					modifier = {
+						factor = 2
+						owner = {
+							is_at_war = yes
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					corruption = 3
+				}
+				is_prosperous = no
+			}
+			add_province_modifier = { 
+				name = poor_facilities
+				duration = 3650
+			}
+		}
+		else = {
+			random_list = {
+				33 = {
+					add_base_tax = 1
+				}
+				33 = {
+					add_base_production = 1
+				}
+				33 = {
+					add_base_manpower = 1
+				}
+			}
+		}
+		province_event = { 
+			id = YW_nature.7
+		}
+		province_event = { 
+			id = YW_nature.8
+		}
+		province_event = { 
+			id = YW_nature.18
+		}
+		if = {
+			limit = {
+				owner = {
+					ai = yes
+					adm_power = 35
+					dip_power = 35
+					mil_power = 35
+				}
+			}
+			owner = {
+				add_adm_power = -30
+				add_dip_power = -30
+				add_mil_power = -30
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.9.a
+	}
+}
+
+province_event = { #Quartering
+	id = YW_nature.10
+	title = YW_nature.10.t
+	desc = YW_nature.10.d
+	picture = ENCOMIENDA_eventPicture
+	hidden = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				units_in_province = 5
+				NOT = { fort_level = 1 }
+			}
+			AND = {
+				units_in_province = 12
+				NOT = { fort_level = 2 }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		export_to_variable = {
+			which = soldiers
+			value = trigger_value:units_in_province 
+		}
+		export_to_variable = {
+			which = man_prov
+			value = base_manpower
+		}
+		divide_variable = {            
+			which = soldiers
+			which = man_prov
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = soldiers
+					value = 2
+				}
+			}
+			add_province_modifier = { 
+				name = quartering
+				duration = 180
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.10.a
+	}
+}
+
+province_event = { #Loss Dev
+	id = YW_nature.11
+	title = YW_nature.11.t
+	desc = YW_nature.11.d
+	picture = ENCOMIENDA_eventPicture
+	hidden = yes
+
+	trigger = {
+		OR = {
+			has_province_modifier = blight_modifier
+			has_province_modifier = crop_failure
+			has_province_modifier = animal_disease
+			has_province_modifier = high_taxes
+			has_province_modifier = extensive_slums
+			has_province_modifier = poor_facilities
+			devastation = 90
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 450
+		modifier = {
+			factor = 5
+			OR = {
+				has_province_modifier = blight_modifier
+				has_province_modifier = crop_failure
+				has_province_modifier = animal_disease
+				has_province_modifier = poor_facilities
+			}
+		}
+		modifier = {
+			factor = 2
+			devastation = 90
+			NOT = { devastation = 100 }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					has_province_modifier = high_taxes
+				}
+			}
+			add_base_tax = -1
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_province_modifier = blight_modifier
+					has_province_modifier = crop_failure
+					has_province_modifier = animal_disease
+					has_province_modifier = poor_facilities
+				}
+			}
+			add_base_production = -1
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_province_modifier = quartering
+				}
+			}
+			add_base_manpower = -1
+		}
+		else = {
+			random_list = {
+				33 = { add_base_tax = -1 }
+				33 = { add_base_production = -1 }
+				33 = { add_base_manpower = -1 }
+			}
+		}
+		province_event = { 
+			id = YW_nature.7
+		}
+		province_event = { 
+			id = YW_nature.8
+		}
+		province_event = { 
+			id = YW_nature.18
+		}
+	}
+
+	option = {
+		name = YW_nature.11.a
+	}
+}
+
+country_event = { #Zoonotic Start
+	id = YW_nature.12
+	title = YW_nature.12.t
+	desc = YW_nature.12.d
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			any_owned_province = {
+				has_province_modifier = zoonotic
+			}
+		}
+		NOT = {
+			has_country_modifier = quarantine
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				has_province_modifier = animal_disease
+			}
+		}
+		modifier = {
+			factor = 0.75
+			calc_true_if = {
+				all_owned_province = {
+					has_province_modifier = poor_facilities
+				}
+				amount = 5
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			every_neighbor_country = {
+				country_event = { 
+					id = YW_nature.17
+					days = 30
+					random = 5
+				}
+			}
+			if = {
+				limit = {
+					any_owned_province = {
+						has_province_modifier = animal_disease
+					}
+				}
+				random_owned_province = {
+					limit = {
+						has_province_modifier = animal_disease
+					}
+					add_permanent_province_modifier = { 
+						name = zoonotic
+						duration = 500  
+					}
+				}
+			}
+			else = {
+				random_owned_province = {
+					add_permanent_province_modifier = { 
+						name = zoonotic
+						duration = 365
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.12.a
+		add_country_modifier = { 
+			name = quarantine
+			duration = 3650
+		}
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 0
+				is_bankrupt = yes
+			}
+		}
+	}
+	option = {
+		name = YW_nature.12.b
+		ai_chance = { factor = 1 }
+	}
+}
+
+province_event = { #Zoonotic Spread
+	id = YW_nature.13
+	title = YW_nature.13.t
+	desc = YW_nature.13.d
+	picture = PLAGUE_eventPicture
+	hidden = yes
+
+	trigger = {
+		any_neighbor_province = {
+			has_province_modifier = zoonotic
+		}
+		NOT = { has_province_modifier = zoonotic }
+	}
+	
+	mean_time_to_happen = {
+		days = 240
+		modifier = {
+			factor = 0.75
+			has_province_modifier = extensive_slums
+		}
+		modifier = {
+			factor = 10
+			owner = {
+				has_country_modifier = quarantine
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				fort_level = 1
+				development = 12
+			}
+		}
+		modifier = {
+			factor = 5
+			has_terrain = desert
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				owner = {
+					has_country_modifier = quarantine
+				}
+			}
+			random = {
+				chance = 75
+				add_permanent_province_modifier = { 
+					name = zoonotic
+					duration = 120
+				}
+			}
+		}
+		else = {
+			add_permanent_province_modifier = { 
+				name = zoonotic
+				duration = 180
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.13.a
+	}
+}
+
+country_event = { #Zoonotic Spread Far
+	id = YW_nature.14
+	title = YW_nature.14.t
+	desc = YW_nature.14.d
+	picture = PLAGUE_eventPicture
+	hidden = yes
+
+	trigger = {
+		any_owned_province = {
+			has_province_modifier = zoonotic
+			NOT = { has_terrain = desert }
+		}
+		NOT = {
+			has_country_modifier = quarantine
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 24
+	}
+
+	immediate = {
+		random_owned_province = {
+			limit = {
+				NOT = { has_province_modifier = zoonotic }
+				NOT = {
+					any_neighbor_province = {
+						has_province_modifier = zoonotic
+					}
+				}
+			}
+			add_permanent_province_modifier = { 
+				name = zoonotic
+				duration = 195
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.14.a
+	}
+}
+
+country_event = { #Corrupted Official
+	id = YW_nature.15
+	title = YW_nature.15.t
+	desc = YW_nature.15.d
+	picture = CORRUPTION_eventPicture
+
+	trigger = {
+		has_advisor = yes
+		corruption = 1
+		NOT = { has_country_modifier = corrupt_official }
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 0.5
+			corruption = 3
+		}
+		modifier = {
+			factor = 0.5
+			has_ruler_flag = race_fae
+		}
+	}
+
+	option = {
+		name = YW_nature.15.a
+		add_country_modifier = {
+			name = corrupt_official
+			duration = 3650
+		}
+		add_years_of_income = 5
+	}
+	option = {
+		name = YW_nature.15.b
+	}
+}
+
+province_event = { #Corruption
+	id = YW_nature.16
+	title = YW_nature.16.t
+	desc = YW_nature.16.d
+	picture = CORRUPTION_eventPicture
+	hidden = yes
+
+	trigger = {
+		owner = {
+			corruption = 1
+		}
+		NOT = { has_province_modifier = corrupt_city }
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.8
+			owner = {
+				governing_capacity_percentage = 1
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				corruption = 5
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				corruption = 10
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				corruption = 20
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				has_country_modifier = corrupt_official
+			}
+		}
+		modifier = {
+			factor = 5
+			owner = {
+				corruption = 1
+				NOT = { corruption = 3 }
+			}
+		}
+		modifier = {
+			factor = 2
+			owner = {
+				stability = 1
+			}
+		}
+	}
+
+	immediate = {
+		export_to_variable = {
+			which = prov_dev
+			value = development
+		}
+		export_to_variable = {
+			which = tax_dev
+			value = base_tax
+		}
+		divide_variable = { which = tax_dev which = prov_dev }
+		if = {
+			limit = {
+				check_variable = {
+					which = tax_dev
+					value = 0.33
+				}
+			}
+			add_province_modifier = {
+				name = corrupt_city
+				duration = 3650
+			}
+		}
+	}
+
+	option = {
+		name = YW_nature.16.a
+	}
+}
+
+country_event = { #Zoonotic Quarentine Neighbor
+	id = YW_nature.17
+	title = YW_nature.17.t
+	desc = YW_nature.17.d
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = YW_nature.17.a
+		add_country_modifier = { 
+			name = quarantine
+			duration = 3650
+		}
+	}
+	option = {
+		name = YW_nature.17.b
+	}
+}
+
+province_event = { #Too Populated
+	id = YW_nature.18
+	title = YW_nature.18.t
+	desc = YW_nature.18.d
+	picture = ENCOMIENDA_eventPicture
+	hidden = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { is_empty = yes } 
+		base_manpower = 3
+	}
+
+	immediate = {
+		random = {
+			chance = 5
+			add_base_manpower = -1
+		}
+		export_to_variable = {
+			which = prov_dev
+			value = development
+		}
+		export_to_variable = {
+			which = man_dev
+			value = base_manpower
+		}
+		divide_variable = { which = man_dev which = prov_dev }
+		if = {
+			limit = {
+				check_variable = {
+					which = man_dev
+					value = 0.425
+				}
+			}
+			add_province_modifier = { 
+				name = overpopulated
+				duration = -1
+			}
+		}
+		else = {
+			remove_province_modifier = overpopulated
+		}
+	}
+
+	option = {
+		name = YW_nature.18.a
+	}
+}
+
+country_event = { #Too much local corruption
+	id = YW_nature.19
+	title = YW_nature.19.t
+	desc = YW_nature.19.d
+	picture = ENCOMIENDA_eventPicture
+
+	trigger = {
+		OR = {
+			AND = {
+				calc_true_if = {
+					all_owned_province = {
+						has_province_modifier = corrupt_city
+					}
+					amount = 2
+				}
+				NOT = { num_of_provinces_in_states = 15 }
+			}
+			AND = {
+				calc_true_if = {
+					all_owned_province = {
+						has_province_modifier = corrupt_city
+					}
+					amount = 5
+				}
+				NOT = { num_of_provinces_in_states = 30 }
+			}
+			AND = {
+				calc_true_if = {
+					all_owned_province = {
+						has_province_modifier = corrupt_city
+					}
+					amount = 10
+				}
+				NOT = { num_of_provinces_in_states = 50 }
+			}
+			AND = {
+				calc_true_if = {
+					all_owned_province = {
+						has_province_modifier = corrupt_city
+					}
+					amount = 15
+				}
+				num_of_provinces_in_states = 50
+			}
+		}
+		NOT = { has_country_modifier = corrupt_provinces }
+	}
+
+	immediate = {
+		add_country_modifier = { 
+			name = corrupt_provinces
+			duration = 7300
+		}
+	}
+
+	option = {
+		name = YW_nature.19.a
+	}
+}
+
+province_event = { #Culture
+	id = YW_nature.20
+	title = YW_nature.20.t
+	desc = YW_nature.20.d
+	picture = PLAGUE_eventPicture
+	hidden = yes
+	
+	trigger = {
+		has_owner_culture = no
+		has_owner_accepted_culture = yes
+		NOT = { unrest = 3 }
+		owner = {
+			stability = 1
+		}
+		NOT = { has_province_modifier = culture_clash }
+		grown_by_development = 3
+	}
+	
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 0.5
+			same_continent = capital
+		}
+		modifier = {
+			factor = 0.2
+			any_neighbor_province = {
+				has_owner_culture = yes
+			}
+		}
+	}
+	
+	immediate = {
+		add_province_modifier = { 
+			name = culture_clash
+			duration = 1095
+		}
+	}
+
+	option = {
+		name = YW_nature.20.a
+		change_culture = owner
+		add_unrest = 1
+	}
+}

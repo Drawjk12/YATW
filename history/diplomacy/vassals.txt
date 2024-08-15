@@ -1,0 +1,41 @@
+vassal = {
+	first = KOR
+	second = KRI
+	start_date = 1.1.1
+	end_date = 250.1.1
+}
+
+vassal = {
+	first = KOT
+	second = KTL
+	start_date = 1.1.1
+	end_date = 250.1.1
+}
+
+vassal = {
+	first = KOT
+	second = KTG
+	start_date = 1.1.1
+	end_date = 250.1.1
+}
+
+vassal = {
+	first = KOT
+	second = KTN
+	start_date = 1.1.1
+	end_date = 250.1.1
+}
+
+vassal = {
+	first = KOC
+	second = KCD
+	start_date = 1.1.1
+	end_date = 250.1.1
+}
+
+vassal = {
+	first = KOC
+	second = KCU
+	start_date = 1.1.1
+	end_date = 150.1.1
+}

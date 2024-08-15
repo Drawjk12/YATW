@@ -1,0 +1,11 @@
+
+base_tax = 0
+base_production = 0
+base_manpower = 0
+
+owner = OFW
+add_core = OFW
+
+culture = anann
+
+religion = mushi

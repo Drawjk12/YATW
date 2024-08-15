@@ -1,0 +1,16 @@
+type={
+	type="portal"
+	use_animation=no
+	scale=0.5
+	time_duration=300.000000
+	object={
+		name="portal"
+		hidden_on_start=no
+		position={
+			785.000 0.0 1100.000 
+		}
+		rotation={
+			0.000 45.000 0.000 
+		}
+	}
+}

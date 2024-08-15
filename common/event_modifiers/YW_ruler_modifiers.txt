@@ -1,0 +1,7 @@
+fae_ruler_mod = {
+	heir_chance = 0
+}
+
+danuatha_ruler_mod = {
+	heir_chance = 0.5
+}
